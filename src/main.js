@@ -32,7 +32,7 @@ export default class ExtWSClient {
 
         if (this._getOption('connect') === true) {
 			setTimeout(
-				() => self.connect(),
+				() => this.connect(),
 			);
 		}
 
@@ -89,7 +89,7 @@ export default class ExtWSClient {
             );
 
             this._toid_dead = setTimeout(
-                () => self.disconnect(),
+                () => this.disconnect(),
                 this._getOption('ping_timeout') * 1e3,
             );
         }
