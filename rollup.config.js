@@ -16,7 +16,18 @@ export default [
 		input: 'src/main.js',
 		output: [{
 			name: 'extws-client',
-			file: 'dist/extws-client.cjs.js',
+			file: 'dist/node/index.js',
+			format: 'cjs',
+		}],
+		plugins: [
+			commonjs(),
+		],
+	},
+	{
+		input: 'src/main.js',
+		output: [{
+			name: 'extws-client',
+			file: 'dist/browser/extws-client.cjs.js',
 			format: 'cjs',
 		}],
 		plugins: [
@@ -24,8 +35,8 @@ export default [
 			nodeResolve(),
 			commonjs(),
 		],
-		manualChunks (id) {
-			console.log('manualChunks', id);
+		manualChunks (/* id */) {
+			// console.log('manualChunks', id);
 			return '';
 		},
 	},
@@ -33,7 +44,7 @@ export default [
 		input: 'src/main.js',
 		output: [{
 			name: 'extws-client',
-			file: 'dist/extws-client.cjs.min.js',
+			file: 'dist/browser/extws-client.cjs.min.js',
 			format: 'cjs',
 			plugins: [
 				terser(),
